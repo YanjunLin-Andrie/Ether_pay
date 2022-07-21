@@ -1,10 +1,10 @@
 ![header](pics/header.png)
-# Title
-**project** is a 
+# Ether Pay
+**Ether Pay** is a user-friendly web application that allows customers to hire FinTech professionals and pay them with cryptocurrency instantly.
 ---
 ---
 
-# **Link to the web application** click [here](http://)
+# **Link to the web application** click [here](http://10.0.0182:8501)
 
 
 Content incudes:
@@ -28,22 +28,36 @@ Content incudes:
 
 * [Typing](https://docs.python.org/3/library/typing.html) - Provides runtime support for type hints
 
-* [Datetime](https://docs.python.org/3/library/datetime.html) - Supplies classes for date and time manipulations
+* [Web3](https://web3py.readthedocs.io/en/stable/) - Python library for ineracting with Ethereum
 
-* [Pandas](https://pandas.pydata.org/) - Data analysis and manipulation
+* [Mnemonic](https://pypi.org/project/mnemonic/) - Generating mnemonic seed phrase
 
-* [Hashlib](https://docs.python.org/3/library/hashlib.html) - Implements a common interface to different secure hash and message digest algorithms
+* [BIP44](https://pypi.org/project/bip44/) - Python library for deriving hierarchical deterministic wallets
 
+* [Ganache](https://trufflesuite.com/ganache/) - A personal Ethereum blockchain for test, inspect, and operate blockchain transactions
+
+```python
+pip install web3==5.17
+pip install eth-tester==0.5.0b3
+pip install mnemonic
+pip install bip44
+```
 ---
 
 ## App Development
-Create 3 dataclasses: 
-* Class Record: defines inpute data and its type
-* Class Block: process and encode inpute data to create a hash for blocks
-* Class PyChain: defines difficulties, add each block, and validate the entire blockchain
 
-Streamlit deployemt:
-Designs and deploy app application
+Create `.env` file and add mnemonic seed phrase provided by Ganache
+
+Create 2 py files: 
+* crypto_wallet.py: This file contains the Ethereum transaction functions that will be integrate in the `fintech_finder.py` file.
+    * `generate_account()`
+    * `get_balance()`
+    * `send_transaction()`
+
+* Class Block: This file contains Fintech professionals database and integrates functions from `crypto_walleet.py` file and incorporate `Streamlit` UI.
+    * `get_people()`
+    * Streamlit design
+
 
 ---
 
@@ -54,41 +68,31 @@ Go to the file folder contains pychian.py file and
 **Run application using command line** under the virtual environment contains all necessary dependencies
 
 ```python
-streamlit run pychain.py
+streamlit run fintech_finder.py
 ```
 
-![commandline](pics/commandline.png)
+![commandline](pics/1.png)
 
 ---
 
 
-**Input Data and add to blockchain**
-
-![1](pics/1.png)
-
----
-
-**Record each transaction**
-
-As the Block Difficulty increased from 2 to 4, it took the nonce increased significantly.
+**Make transaction and add to blockchain**
 
 ![2](pics/2.png)
+
+---
+
+**Check transaction Record on Ganache**
+
 ![3](pics/3.png)
 
 ---
-**Block Inspector displays selected block information**
+**Review Balance**
 
 ![4](pics/4.png)
-
 ---
 
-**Chain validation shows the blockchain is safe and trustworthy**
-
-![5](pics/5.png)
-
 ---
-
-
 ## Contributors
 
 **Yanjun Lin Andrie** <span>&nbsp;&nbsp;</span> |
